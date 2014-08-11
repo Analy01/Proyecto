@@ -1,6 +1,8 @@
 package com.anita.web;
 
 import java.io.IOException;
+import static javassist.CtMethod.ConstParameter.integer;
+import static javassist.CtMethod.ConstParameter.integer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +29,7 @@ public class ControladorLibros {
       
      @RequestMapping (value = "/libro/{nombre}/{titulo}/{autor}/{editorial}", method = RequestMethod.PUT, headers = {"Accept=text/html"}) 
      public @ResponseBody String actualizar (@PathVariable String nombre,@PathVariable String titulo,@PathVariable String autor,
-             @PathVariable String autor,@PathVariable String editorial){ 
+             @PathVariable String editorial){ 
           
          try {
              DAOLibrosImpl.actualizar (new Libro(nombre,titulo,autor,editorial)); 
