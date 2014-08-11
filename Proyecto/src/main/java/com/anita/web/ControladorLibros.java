@@ -40,18 +40,6 @@ public class ControladorLibros {
           
      } 
       
-     @RequestMapping (value = "/libro/{id_l}/{nombre}", method = RequestMethod.DELETE, headers = {"Accept=text/html"}) 
-     public @ResponseBody String borrarlib (@PathVariable int id_l, @PathVariable String nombre){ 
-          
-         try {
-             DAOLibrosImpl.borrarlib(new Libro(id_l, nombre));
-            return "Registro quitado";     
-         } catch (Exception e) { 
-             return "No hay registro"; 
-         } 
-          
-     } 
-      
      @RequestMapping (value = "/libros", method = RequestMethod.GET, headers = {"Accept=Application/json"}) 
      public @ResponseBody String buscarTodLibros() throws IOException{ 
           
