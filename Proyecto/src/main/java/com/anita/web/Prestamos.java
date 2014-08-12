@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package com.anita.web;
 
 import java.io.Serializable;
@@ -15,139 +21,117 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 /**
  *
- * @author A-n-I-t-A
+ * @author T-202
  */
 @Entity
-@Table(name = "Prestamos")
+@Table(name = "prestamos")
+@NamedQueries({
+    @NamedQuery(name = "Prestamos.findAll", query = "SELECT p FROM Prestamos p")})
 public class Prestamos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_p")
-    private Integer id_p;
-    
+    private Integer idP;
     @Column(name = "dia_prestamo")
     @Temporal(TemporalType.DATE)
-    private Date dia_prestamo;
-    
+    private Date diaPrestamo;
     @Column(name = "dia_entrega")
     @Temporal(TemporalType.DATE)
-    private Date dia_entrega;
-    
+    private Date diaEntrega;
+    @Size(max = 50)
     @Column(name = "nombre_libro")
-    @Temporal(TemporalType.DATE)
-    private Date nombre_libro;
-    
+    private String nombreLibro;
     @JoinColumn(name = "id_u", referencedColumnName = "id_u")
     @ManyToOne
-    private Usuario id_u;
+    private Usuario idU;
     @JoinColumn(name = "id_l", referencedColumnName = "id_l")
     @ManyToOne
-    private Libro id_l;
+    private Libros idL;
 
-    public Integer getId_p() {
-        return id_p;
+    public Prestamos() {
     }
 
-    public void setId_p(Integer id_p) {
-        this.id_p = id_p;
+    public Prestamos(Integer idP) {
+        this.idP = idP;
     }
 
-    public Date getDia_prestamo() {
-        return dia_prestamo;
+    public Integer getIdP() {
+        return idP;
     }
 
-    public void setDia_prestamo(Date dia_prestamo) {
-        this.dia_prestamo = dia_prestamo;
+    public void setIdP(Integer idP) {
+        this.idP = idP;
     }
 
-    public Date getDia_entrega() {
-        return dia_entrega;
+    public Date getDiaPrestamo() {
+        return diaPrestamo;
     }
 
-    public void setDia_entrega(Date dia_entrega) {
-        this.dia_entrega = dia_entrega;
+    public void setDiaPrestamo(Date diaPrestamo) {
+        this.diaPrestamo = diaPrestamo;
     }
 
-    public Date getNombre_libro() {
-        return nombre_libro;
+    public Date getDiaEntrega() {
+        return diaEntrega;
     }
 
-    public void setNombre_libro(Date nombre_libro) {
-        this.nombre_libro = nombre_libro;
+    public void setDiaEntrega(Date diaEntrega) {
+        this.diaEntrega = diaEntrega;
     }
 
-    public Usuario getId_u() {
-        return id_u;
+    public String getNombreLibro() {
+        return nombreLibro;
     }
 
-    public void setId_u(Usuario id_u) {
-        this.id_u = id_u;
+    public void setNombreLibro(String nombreLibro) {
+        this.nombreLibro = nombreLibro;
     }
 
-    public Libro getId_l() {
-        return id_l;
+    public Usuario getIdU() {
+        return idU;
     }
 
-    public void setId_l(Libro id_l) {
-        this.id_l = id_l;
+    public void setIdU(Usuario idU) {
+        this.idU = idU;
     }
 
-    public Prestamos(Integer id_p, Date dia_prestamo, Date dia_entrega, Date nombre_libro, Usuario id_u, Libro id_l) {
-        this.id_p = id_p;
-        this.dia_prestamo = dia_prestamo;
-        this.dia_entrega = dia_entrega;
-        this.nombre_libro = nombre_libro;
-        this.id_u = id_u;
-        this.id_l = id_l;
+    public Libros getIdL() {
+        return idL;
+    }
+
+    public void setIdL(Libros idL) {
+        this.idL = idL;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + (this.id_p != null ? this.id_p.hashCode() : 0);
-        hash = 53 * hash + (this.dia_prestamo != null ? this.dia_prestamo.hashCode() : 0);
-        hash = 53 * hash + (this.dia_entrega != null ? this.dia_entrega.hashCode() : 0);
-        hash = 53 * hash + (this.nombre_libro != null ? this.nombre_libro.hashCode() : 0);
-        hash = 53 * hash + (this.id_u != null ? this.id_u.hashCode() : 0);
-        hash = 53 * hash + (this.id_l != null ? this.id_l.hashCode() : 0);
+        int hash = 0;
+        hash += (idP != null ? idP.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Prestamos)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Prestamos other = (Prestamos) obj;
-        if (this.id_p != other.id_p && (this.id_p == null || !this.id_p.equals(other.id_p))) {
-            return false;
-        }
-        if (this.dia_prestamo != other.dia_prestamo && (this.dia_prestamo == null || !this.dia_prestamo.equals(other.dia_prestamo))) {
-            return false;
-        }
-        if (this.dia_entrega != other.dia_entrega && (this.dia_entrega == null || !this.dia_entrega.equals(other.dia_entrega))) {
-            return false;
-        }
-        if (this.nombre_libro != other.nombre_libro && (this.nombre_libro == null || !this.nombre_libro.equals(other.nombre_libro))) {
-            return false;
-        }
-        if (this.id_u != other.id_u && (this.id_u == null || !this.id_u.equals(other.id_u))) {
-            return false;
-        }
-        if (this.id_l != other.id_l && (this.id_l == null || !this.id_l.equals(other.id_l))) {
+        Prestamos other = (Prestamos) object;
+        if ((this.idP == null && other.idP != null) || (this.idP != null && !this.idP.equals(other.idP))) {
             return false;
         }
         return true;
     }
-    
+
+    @Override
+    public String toString() {
+        return "com.anita.web.Prestamos[ idP=" + idP + " ]";
+    }
     
 }
-

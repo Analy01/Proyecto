@@ -1,29 +1,55 @@
 package com.anita.web;
 
+import static com.anita.web.DAO.close;
+import static com.anita.web.DAO.getSession;
+import java.util.ArrayList;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+
 /**
  *
- * @author A-n-I-t-A
+ * @author socom_000
  */
-public class DAOLibrosImpl {
-
-    static Object buscarPorId(int id_l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public class DAOLibrosImpl extends DAO{
+    
+    public void agregar_lib(Libros lib) {
+    begin();
+    getSession().save(lib);
+    commit();
+    close();
+    
     }
-
-    static Object buscarTodLibros() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ 
+    public ArrayList<Libros> buscarTodosLibros() {
+        begin();
+        Query q = getSession().createQuery("from Libros");
+      //  Criteria c=getSession().createCriteria(Alumno.class);
+        ArrayList<Libros> lib = (ArrayList<Libros>)q.list();
+        commit();
+        close();
+         
+return lib; 
+        
+      
     }
-
-    static void agregar_lib(Libro libro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    static void actualizar(Libro libro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    static void borrarlib(Libro libro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+ public void borrarLibros(Libros p){
+            begin();
+             getSession().delete(p);
+            commit();
+            close();
+ }   
+       
+  public Libros buscarPorId(int id){
+      begin();
+     Query q = getSession().createQuery("from Libros where id = :id");
+        q.setInteger("id",id);
+        Libros p = (Libros)q.uniqueResult();
+        commit();
+        close();
+return p;  
+   
+  } 
+    
     
 }

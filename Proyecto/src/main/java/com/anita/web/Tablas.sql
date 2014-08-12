@@ -22,4 +22,4 @@ create table prestamos (id_p integer primary key auto_increment,
                     foreign key(id_u) references usuario(id_u),
                     foreign key(id_l) references libros(id_l));
 
-select * from prestamos;
+select * from libros;
