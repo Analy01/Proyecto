@@ -1,6 +1,7 @@
 package com.anita.web;
 
 import java.util.ArrayList;
+import com.anita.web.Prestamos;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 

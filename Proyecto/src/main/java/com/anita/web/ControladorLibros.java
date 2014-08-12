@@ -1,6 +1,7 @@
 package com.anita.web;
 
 import java.io.IOException;
+import com.anita.web.Libros;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

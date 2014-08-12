@@ -52,5 +52,9 @@ public class DAOUsuarioImpl extends DAO {
     static Object buscarId(int id_u) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    static Object buscarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
