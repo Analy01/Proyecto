@@ -13,30 +13,23 @@
     
     <body>
         <center>
-        <h1>Biblioteca!</h1>
-        <b>
-                Nombre:
-            
-        <input type="text" id="nombre"/>
-        </b>
-         <p>
-        <b>
-           
-                Apellido Paterno:
-            
-        <input type="text" id="apellido_paterno"/>
-        </b>
-        <p> 
-        <input type="button" value="Guardar usuario" id="boton-guardar">
+        <h1>*** !!Bienvenidos a Biblioteca Anita !! ***</h1>
+        <p>
+            <b>
+                ** Selecciona la opcion deseada **
+            </b>
+            <p>
+                
+        <p>
+        <input type="button" value="Incluir usuario" onClick="location.href = 'IncUsuario.jsp' ">
         
-    </center>
+        <input type="button" value="Incluir libros" onClick="location.href = 'IncLibros.jsp' ">
+        
+        <input type="button" value="Incluir prestamos" onClick="location.href = 'IncPrestamos.jsp' ">
+        
+         </center>
+        
+        <div></div>
         </body>
-    
-    
-    
-    
-    
-    
-    
     
 </html>

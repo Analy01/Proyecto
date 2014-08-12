@@ -3,53 +3,57 @@ package com.anita.web;
 import static com.anita.web.DAO.close;
 import static com.anita.web.DAO.getSession;
 import java.util.ArrayList;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 
 /**
  *
- * @author socom_000
+ * @author A-n-I-t-A
  */
+
+
 public class DAOLibrosImpl extends DAO{
     
-    public void agregar_lib(Libros lib) {
-    begin();
-    getSession().save(lib);
-    commit();
-    close();
-    
-    }
- 
-    public ArrayList<Libros> buscarTodosLibros() {
+    public static void agregarLibro(Libros libro){
         begin();
-        Query q = getSession().createQuery("from Libros");
-      //  Criteria c=getSession().createCriteria(Alumno.class);
-        ArrayList<Libros> lib = (ArrayList<Libros>)q.list();
+        getSession().save(libro);
         commit();
         close();
-         
-return lib; 
-        
-      
     }
-    
- public void borrarLibros(Libros p){
-            begin();
-             getSession().delete(p);
-            commit();
-            close();
- }   
-       
-  public Libros buscarPorId(int id){
-      begin();
-     Query q = getSession().createQuery("from Libros where id = :id");
-        q.setInteger("id",id);
-        Libros p = (Libros)q.uniqueResult();
+    public static ArrayList<Libros> buscarTodosLibros(){
+        begin();
+        Query q =getSession().createQuery("from Libro");
+        ArrayList<Libros> libro=(ArrayList<Libros>) q.list();
         commit();
         close();
-return p;  
-   
-  } 
-    
-    
+        return libro;
+    }
+    public static void borrarLibro(Libros libro){
+        begin();
+        getSession().delete(libro);
+        commit();
+        close();
+    }
+    public static Libros buscarPorId(int id){
+        begin();
+        Query q =getSession().createQuery("from Libro where id=:id");
+        q.setInteger("id", id);
+        Libros a=(Libros)q.uniqueResult();
+        commit();
+        close();
+        return a;
+    }
+    public static void actualizar(Libros l){
+        begin();
+        getSession().update(l);
+        commit();
+        close();
+    }
+
+    static Object buscarId(int id_l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    static Object buscarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
