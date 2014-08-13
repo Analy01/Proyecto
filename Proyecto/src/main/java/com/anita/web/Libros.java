@@ -41,6 +41,21 @@ public class Libros implements Serializable {
     @Size(max = 80)
     @Column(name = "editorial")
     private String editorial;
+
+    public Libros(String nombre, String titulo, String autor, String editorial) {
+        this.nombre = nombre;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editorial = editorial;
+    }
+
+    public Libros(Integer idL, String nombre, String titulo, String autor, String editorial) {
+        this.idL = idL;
+        this.nombre = nombre;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editorial = editorial;
+    }
     
 
     public Libros() {

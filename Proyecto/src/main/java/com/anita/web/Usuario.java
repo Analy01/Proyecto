@@ -47,6 +47,16 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "idU")
     private Collection<Prestamos> prestamosCollection;
 
+    public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String carrera, String correo) {
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.carrera = carrera;
+        this.correo = correo;
+    }
+
+    
+    
     public Usuario() {
     }
 

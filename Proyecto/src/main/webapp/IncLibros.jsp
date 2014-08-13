@@ -9,13 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        
         <title>Web Anita</title>
     </head>
     <body>
     <center>
         <h1>*** !!Bienvenido a la Sesión de Libros!! ***</h1>
         
-        p>
+        <p>
             <b>
                 Inserta los Campos Requeridos
             </b>
@@ -62,7 +66,7 @@
        $("#boton-mostrar").click(function(){ 
         $("#todos").show();/* Este hace que se vea la chingadera de menu */   
         $("#todos").empty(); /* con esta funcion empty vaciamos todo, si  no se te juntaran un chingo de registros en el select de html */   
-  $.getJSON("http://localhost:8091/Proyecto/servicios/libros",function(result){
+  $.getJSON("http://localhost:8095/Proyecto/servicios/libros",function(result){
     $.each(result, function(i, campo){
       $("#todos").append("<option>"+campo.nombre + "</option> ");
     });

@@ -55,6 +55,10 @@ public class Prestamos implements Serializable {
         this.idP = idP;
     }
 
+    Prestamos(int id_u, int id_l, String dia_entrega, String dia_entrega0, String nombre_libro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Integer getIdP() {
         return idP;
     }
@@ -103,6 +107,16 @@ public class Prestamos implements Serializable {
         this.idL = idL;
     }
 
+    public Prestamos(Date diaPrestamo, Date diaEntrega, String nombreLibro, Usuario idU, Libros idL) {
+        this.diaPrestamo = diaPrestamo;
+        this.diaEntrega = diaEntrega;
+        this.nombreLibro = nombreLibro;
+        this.idU = idU;
+        this.idL = idL;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

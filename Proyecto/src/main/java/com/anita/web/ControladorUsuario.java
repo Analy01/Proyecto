@@ -1,7 +1,5 @@
 package com.anita.web;
 
-import java.io.IOException;
-import com.anita.web.Usuario;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,54 +16,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/")
 public class ControladorUsuario {
     
-    @RequestMapping (value = "/Usuario/{nombre}/{apellido_paterno}/{apellido_materno}/{carrera}/{correo}", method = RequestMethod.POST, headers = {"Accept=text/html"})
-    public @ResponseBody String insertar(@PathVariable String nombre, @PathVariable String apellido_paterno, 
-            @PathVariable String apellido_materno, @PathVariable String carrera, @PathVariable String correo){
+    @RequestMapping(value="/usuario/{nombre}/{apellido_paterno}/{apellido_materno}/{carrera}/{correo}", method=RequestMethod.POST, headers={"Accept=text/html"})
+    public @ResponseBody String mensaje(@PathVariable String nombre,@PathVariable String apellido_paterno, @PathVariable String apellido_materno,
+                      @PathVariable String carrera,@PathVariable String correo){
+           DAOUsuarioImpl d= new DAOUsuarioImpl();
+           d.agregarUsuario (new Usuario(nombre, apellido_paterno, apellido_materno, carrera, correo ));
+           return "Libro guardado con exito";
+    }
+    
+    @RequestMapping(value="/usuario", method=RequestMethod.GET, headers={"Accept=application/json"})
+    public @ResponseBody String metodo2()throws Exception {
+        DAOUsuarioImpl d=new DAOUsuarioImpl();
+        ObjectMapper maper=new ObjectMapper();
+            
+        return maper.writeValueAsString(d.buscarTodosUsuario());
+    }
+     @RequestMapping(value = "/usuario/{id_u}/{nombre}", method = RequestMethod.DELETE, headers = {"Accept=text/html"})
+    public @ResponseBody String eliminar(@PathVariable int id, @PathVariable String nombre){
         
         try {
-            DAOUsuarioImpl.insertar(new Usuario(nombre, apellido_paterno, apellido_materno, carrera, correo));
-            return "Registrado Insertado Correctamente";
+            DAOUsuarioImpl.borrarUsuario(new Usuario(id));
+            return "El Usuario se ha eliminado";
         } catch (Exception e) {
-            return "No Existen";
+            return "error";
         }
         
     }
-    
-    @RequestMapping (value = "/Usuario/{nombre}/{apellido_paterno}/{apellido_materno}/{carrera}/{correo}", method = RequestMethod.PUT, headers = {"Accept=text/html"})
-    public @ResponseBody String actualizar(@PathVariable String nombre, @PathVariable String apellido_paterno, 
-            @PathVariable String apellido_materno, @PathVariable String carrera, @PathVariable String correo){
-        
-        try {
-            DAOUsuarioImpl.actualizar(new Usuario(nombre, apellido_paterno, apellido_materno, carrera, correo));
-            return "Registro Actualizado Correctamente";
-        } catch (Exception e) {
-            return "Error al actualizar";
-        }
-    }
-    
-    @RequestMapping (value = "/Usuario/{id_u}/{nombre}", method = RequestMethod.DELETE, headers = {"Accept=text/html"})
-    public @ResponseBody String eliminar(@PathVariable int id_u, @PathVariable String nombre){
-        
-        try {
-            DAOUsuarioImpl.borrar(new Usuario(id_u,Usuario));
-            return "Registro Eliminado";
-        } catch (Exception e) {
-            return "Error al borrar";
-        }
-    }
-    
-    @RequestMapping (value = "/Usuario", method = RequestMethod.GET, headers = {"Accept=Application/jason"})
-    public @ResponseBody String buscarTodos () throws IOException{
-        
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(DAOUsuarioImpl.buscarTodos());
-    }
-    
-    @RequestMapping (value = "/Usuario/{id_u}", method = RequestMethod.GET, headers = {"Accept=text/html"})
-    public @ResponseBody String buscarPorId (@PathVariable int id_u){
-        
-        return DAOUsuarioImpl.buscarId(id_u).toString();
-    }
-    
 }
-

@@ -16,9 +16,14 @@
         <h1>*** !!Bienvenidos a Biblioteca Anita !! ***</h1>
         <p>
             <b>
+                
                 ** Selecciona la opcion deseada **
+                
+                
             </b>
             <p>
+                
+                
                 
         <p>
         <input type="button" value="Incluir usuario" onClick="location.href = 'IncUsuario.jsp' ">

@@ -9,13 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <title>Web Anita</title>
     </head>
     <body>
         <center>
         <h1>*** !!Bienvenido a la Sesión de Usuario!! ***</h1>
 
-               p>
+               <p>
             <b>
                 Inserta los Campos Requeridos
             </b>
@@ -26,25 +28,25 @@
                 </b>
         <p>
             <b>
-                Apellido Paterno:
+                                Apellido Paterno:
         <input type="text" id="apellido_paterno" />
             </b>
         <p>
             <p>
             <b>
-                Apellido Materno:
+                                 Apellido Materno:
         <input type="text" id="apellido_materno" />
             </b>
         <p>
             <p>
             <b>
-                Carrera:
+                                          Carrera:
         <input type="text" id="carrera" />
             </b>
         <p>
             <p>
             <b>
-                Correo:
+                                          Correo:
         <input type="text" id="correo" />
             </b>
         <p>
@@ -68,7 +70,7 @@
        $("#boton-mostrar").click(function(){ 
         $("#todos").show();/* Este hace que se vea la chingadera de menu */   
         $("#todos").empty(); /* con esta funcion empty vaciamos todo, si  no se te juntaran un chingo de registros en el select de html */   
-  $.getJSON("http://localhost:8091/Proyecto/servicios/usuario",function(result){
+  $.getJSON("http://localhost:8095/Proyecto/servicios/usuario",function(result){
     $.each(result, function(i, campo){
       $("#todos").append("<option>"+campo.nombre + "</option> ");
     });

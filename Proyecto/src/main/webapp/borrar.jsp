@@ -9,6 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <title>Web Anita</title>
     </head>
     <body>
@@ -16,11 +18,11 @@
         
         <p>
             <b>
-                Que Libro Deseas Eliminar?
+                Que Deseas Eliminar?
             </b>
             <p>
                 <b>
-                    Id Libro:
+                    Id:
         <input type="text" id_l="id_l" />
                 </b>
         <p>
@@ -32,7 +34,7 @@
             
             <input type="button" value="Inicio" onClick="location.href = 'index.jsp' ">
             
-            <input type="button" value="Borrar Libro" id="boton-borrar">
+            <input type="button" value="Borrar" id="boton-borrar">
         
        
 
@@ -46,7 +48,7 @@ $("#boton-borrar").click(function(){
     var nombre=$("#nombre").val();
                 $.ajax({
         method:'DELETE',
-        url:"http://localhost:8091/Proyecto/servicios/libros/"+id_l+"/"+nombre,
+        url:"http://localhost:8095/Proyecto/servicios/libros/"+id_l+"/"+nombre,
         success:function(valor){
             alert(valor);
         },
