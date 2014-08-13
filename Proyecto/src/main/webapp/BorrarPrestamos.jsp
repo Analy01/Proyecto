@@ -1,6 +1,6 @@
 <%-- 
-    Document   : borrar
-    Created on : 11/08/2014, 11:04:31 PM
+    Document   : BorrarPrestamos
+    Created on : 12/08/2014, 11:05:22 PM
     Author     : A-n-I-t-A
 --%>
 
@@ -8,22 +8,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <title>Web Anita</title>
     </head>
     <body>
-        <h1>*** Borrado Exitosamente ***</h1>
+        <center>
+        <h1>*** !!Bienvenido a la Sesión de Prestamos!! ***</h1>
         
         <p>
             <b>
-                Que Deseas Eliminar?
+                ^^ ¿Qué Prestamo Deseas Borrar? ^^
             </b>
             <p>
                 <b>
-                    Id:
-        <input type="text" id_l="id_l" />
+                    Id Prestamo:
+        <input type="text" id="id_p" />
                 </b>
         <p>
           <b>
@@ -31,12 +32,13 @@
         <input type="text" id="nombre" />
                 </b>
         <p> 
+                <input type="button" value="Inicio" onClick="location.href = 'index.jsp' ">
+                
+        <p>
             
-            <input type="button" value="Inicio" onClick="location.href = 'index.jsp' ">
-            
-            <input type="button" value="Borrar" id="boton-borrar">
+        <input type="button" value="Borrar Prestamos" id="boton-borrar">
         
-       
+     
 
        
         </center>
@@ -44,11 +46,11 @@
         
        
 $("#boton-borrar").click(function(){
-    var id_l=$("#id_l").val();
+    var id_p=$("#id_p").val();
     var nombre=$("#nombre").val();
                 $.ajax({
         method:'DELETE',
-        url:"http://localhost:8095/Proyecto/servicios/libros/"+id_l+"/"+nombre,
+        url:"http://localhost:8095/Proyecto/servicios/prestamos/"+id_p+"/"+nombre,
         success:function(valor){
             alert(valor);
         },
@@ -58,11 +60,11 @@ $("#boton-borrar").click(function(){
     });
 });
 
+   
+
+
         </script>
         
         <div></div>
-    </body>
-</html>
-
     </body>
 </html>
